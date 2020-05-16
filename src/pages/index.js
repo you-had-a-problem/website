@@ -8,6 +8,7 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
   }
@@ -15,7 +16,7 @@ export const query = graphql`
 
 const IndexPage = ({data}) => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title={data.site.siteMetadata.title} />
     <h1>
      {data.site.siteMetadata.title}
     </h1>
