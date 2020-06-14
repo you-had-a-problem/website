@@ -3,9 +3,8 @@ module.exports = {
     title: `—, you had a problem`,
     description: `A design duo based in the Moon. Well, at least getting there. → say hey@youhadaproblem.com`,
     keywords: `you had a problem, design, graphic, creative code, development, frontend, rafael ferreira, miguel cruz`,
-    url: "https://www.youhadaproblem.com",
-    image: "/images/og.png",
-    twitterUsername: "@youhadaproblem"
+    url: `https://www.youhadaproblem.com`,
+    twitterUsername: `@youhadaproblem`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

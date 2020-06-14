@@ -3,8 +3,9 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
+import OgImage from "../images/og.png"
 
-const SEO = ({ title, description, keywords, image, article }) => {
+const SEO = ({ title, description, keywords, article }) => {
   const { pathname } = useLocation()
   const { site } = useStaticQuery(query)
 
@@ -13,7 +14,6 @@ const SEO = ({ title, description, keywords, image, article }) => {
     defaultDescription,
     defaultKeywords,
     siteUrl,
-    defaultImage,
     twitterUsername,
   } = site.siteMetadata
 
@@ -21,7 +21,6 @@ const SEO = ({ title, description, keywords, image, article }) => {
     title: title || defaultTitle,
     description: description || defaultDescription,
     keywords: keywords || defaultKeywords,
-    image: `${siteUrl}${image || defaultImage}`,
     url: `${siteUrl}${pathname}`,
   }
 
@@ -29,7 +28,7 @@ const SEO = ({ title, description, keywords, image, article }) => {
     <Helmet title={seo.title}>
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={seo.keywords} />
-      <meta name="image" content={seo.image} />
+      <meta name="image" content={OgImage} />
 
       {seo.url && <meta property="og:url" content={seo.url} />}
 
@@ -41,7 +40,7 @@ const SEO = ({ title, description, keywords, image, article }) => {
         <meta property="og:description" content={seo.description} />
       )}
 
-      {seo.image && <meta property="og:image" content={seo.image} />}
+      <meta property="og:image" content={OgImage} />
 
       <meta name="twitter:card" content="summary_large_image" />
 
@@ -55,7 +54,7 @@ const SEO = ({ title, description, keywords, image, article }) => {
         <meta name="twitter:description" content={seo.description} />
       )}
 
-      {seo.image && <meta name="twitter:image" content={seo.image} />}
+      <meta name="twitter:image" content={OgImage} />
     </Helmet>
   )
 }
@@ -66,7 +65,6 @@ SEO.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   keywords: PropTypes.string,
-  image: PropTypes.string,
   article: PropTypes.bool,
 }
 
@@ -74,7 +72,6 @@ SEO.defaultProps = {
   title: null,
   description: null,
   keywords: null,
-  image: null,
   article: false,
 }
 
@@ -86,7 +83,6 @@ const query = graphql`
         defaultDescription: description
         defaultKeywords: keywords
         siteUrl: url
-        defaultImage: image
         twitterUsername
       }
     }
